@@ -10,4 +10,4 @@
 * I recommend attaching the internal power cables to the GPU before you install it in the Venus PCI-e slot. It is tough to connect the power cables after the GPU is installed in the slot.
 * Once you have the GPU installed and connected to power cables, you can connect the external power cord and plug it into the wall. If you turn the Venus on via its rear power switch, nothing will happen! This was a bit of a shock. Do not worry. Eventually I figured out that the Venus will not power on until after it is connected to a host via the TB3 / USB-C cable! Would be nice for Mantiz to mention this in the (very brief) user guide.
 
-![eGPU + MacBook Pro Setup](GBMSegmentation/eGPU_setup.jpg)
+![eGPU + MacBook Pro Setup](../GBMSegmentation/eGPU_setup.jpg)
