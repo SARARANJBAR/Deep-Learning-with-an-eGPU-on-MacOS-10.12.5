@@ -1,4 +1,7 @@
-# Get Theano running on a Macbook Pro with an eGPU
+# Get Theano (TensorFlow / Keras) running on a Macbook Pro with an eGPU
+July 22 2017
+
+By: [J. Ross Mitchell, PhD](mailto:joseph.ross.mitchell@gmail.com)
 
 ### Hardware Requirements (what I used):
 1. a Macbook Pro 15-inch (MacBookPro13,3 Intel Core i7 @ 2.9 GHz 16 GB ram) running Mac OS 10.12.5 Sierra. Though this process should work on any Mac with Thunderbolt 3 / USB-C
@@ -11,3 +14,9 @@
 * Once you have the GPU installed and connected to power cables, you can connect the external power cord and plug it into the wall. If you turn the Venus on via its rear power switch, nothing will happen! This was a bit of a shock. Do not worry. Eventually I figured out that the Venus will not power on until after it is connected to a host via the TB3 / USB-C cable! Would be nice for Mantiz to mention this in the (very brief) user guide.
 
 ![eGPU + MacBook Pro Setup](https://user-images.githubusercontent.com/13511772/28494636-0dc371d6-6ee9-11e7-8632-703352874dd2.jpg)
+
+
+### Software Requirements 
+1. [Anaconda Python](https://www.continuum.io) Download and install. Next, add conda-forge to the list of channels anaconda searches for packages. At the command line enter: "_conda config --append channels conda-forge_". This adds conda-forge to the search list for _all_ Anaconda environments. Now, create a new environment for Python 2.7 with the following command: "_conda create --name deeplearning python=2.7_". Activate the new environment by entering: _"source activate deeplearning"_
+1. [Theano](http://deeplearning.net/software/theano/) (version 0.9.0 as of this writing). You can get this via conda. At the command line enter: _"conda install theano"_.
+1. _Optional and not tested:_ [Keras](https://keras.io) (which will also install TensorFlow). Enter this command: _"conda install keras"_
