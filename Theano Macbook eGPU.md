@@ -17,9 +17,10 @@ By: [J. Ross Mitchell, PhD](mailto:joseph.ross.mitchell@gmail.com)
 
 ![Mantiz Venus](https://user-images.githubusercontent.com/13511772/28494927-3ca7711a-6ef2-11e7-9657-cb336048fe3d.jpg)
 
-### Software Requirements 
+### Software Requirements and Installation
 1. [Anaconda Python](https://www.continuum.io) Download and install. Next, add conda-forge to the list of channels anaconda searches for packages. At the command line enter: "_conda config --append channels conda-forge_". This adds conda-forge to the search list for _all_ Anaconda environments. Now, create a new environment for Python 2.7 with the following command: "_conda create --name deeplearning python=2.7_". Activate the new environment by entering: _"source activate deeplearning"_
-1. [Theano](http://deeplearning.net/software/theano/) (version 0.9.0 as of this writing). You can get this via conda. At the command line enter: _"conda install theano"_.
+1. [Theano](http://deeplearning.net/software/theano/) (version 0.9.0 as of this writing). You can get this via conda. At the command line enter: _"conda install theano"_. Once _theano_ is installed, you need to add the following line to your _"~/.bash_profile"_:
+    > export THEANO_FLAGS="device=gpu,floatX=float32"
 1. _Optional and not tested:_ [Keras](https://keras.io) (which will also install TensorFlow). Enter this command: _"conda install keras"_
 1. Xcode 8.2.1. Note: this is not the current release of Xcode. You _must_ use version 8.2.1. Newer versions of Xcode are incompatible with the deep learning environment we are creating. Xcode 8.2.1 may be obtained from [Apple's Developer Download page](https://developer.apple.com/download/more/). On that page, scroll down until you see **"See more downloads"**. Click on that phrase (it does not look like a link!) to access older versions of Xcode. Access to Apple's Dev website requires a (free) account. Just do it. 
     1. Note: We need (this version of) Xcode for its compiler. Theano needs _clang_ to compile functions (train / test / validate, for example) on the fly. If you already have a newer version of Xcode installed, no problem! Install v8.2.1 in its own directory, say _/Applications/Xcode8.2.1_. You can make v8.2.1 the "active" version by entering the following command: _"sudo xcode-select -s /Applications/Xcode8.2.1/Contents/Developer"_. You can switch back to your normal Xcode using: _"sudo xcode-select -s /Applications/Xcode/Contents/Developer"_.
@@ -29,3 +30,12 @@ By: [J. Ross Mitchell, PhD](mailto:joseph.ross.mitchell@gmail.com)
 1. It is important to complete **Step 4. Verification** on that page. Make sure NVIDIA's compiler is installed and working. Enter: _"nvcc -V"_ in a Terminal window. Also, make sure you compile the four sample programs as listed on that page. The _"makefile"_ and source code files for these programs are located in _"/Developer/NVIDIA/CUDA-8.0/samples/"_. However, to build these programs you need to prepend each _"make"_ command with _"sudo"_. This is because the _"samples"_ directory is read-only. The output executables are installed in _"/Developer/NVIDIA/CUDA-8.0/samples/bin/x86_64/darwin/release/"_. Go there and run the _"deviceQuery"_ and _"bandwidthTest"_ programs. Output from those programs on my system is shown below.
 
 ![deviceQuery output](https://user-images.githubusercontent.com/13511772/28495273-4ba03a3a-6efc-11e7-8059-3aef12a07bf7.png)
+
+![bandwidthTest ouput](https://user-images.githubusercontent.com/13511772/28495276-4fa9565c-6efc-11e7-835a-ebbbf48b8a51.png)
+
+1. [cuDNN v5.1 for CUDA 8.0](https://developer.nvidia.com/rdp/cudnn-download). You need a (free) NVIDIA developer account to access this library. cuDNN contains a number of CUDA algorithms to accelerate deep neural networks. You _must_ use cuDNN v5.1! Newer versions of cuDNN are currently incompatible. Pascal architecture GPUs require cuDNN v5 or newer.
+    1. cuDNN is packaged as a .zip file. After unpacking it you will see a folder with two subfolders: _"lib"_ and _"include"_. Copy the files from the _"lib"_ subfolder to _"/Developer/NVIDIA/CUDA-8.0/lib"_. Copy the file in the _"include"_ subfolder to _"/Developer/NVIDIA/CUDA-8.0/include"_.
+
+### Test Theano!
+
+Finally we are ready to test our environment! Activate your deep learning Python environment by entering: _"source activate deeplearning"_. Next, launch Python by entering: _"python"_. From the Python prompt enter: _"#import theano"_. It should pause, then eventually describe which GPU it is using, and that cuDNN is available.
