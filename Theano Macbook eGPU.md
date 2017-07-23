@@ -42,4 +42,23 @@ Finally we are ready to test our environment! Activate your deep learning Python
 
 ![theano](https://user-images.githubusercontent.com/13511772/28495497-76fb71b6-6f03-11e7-8c53-f420aae5969a.png)
 
+Enter this simple program, from the [Theano homepage](http://deeplearning.net/software/theano/introduction.html), one line at a time (or copy / paste). You should get no complaints from Python after executing the _"assert"_ statement...
 
+```python
+import theano
+from theano import tensor
+
+# declare two symbolic floating-point scalars
+a = tensor.dscalar()
+b = tensor.dscalar()
+
+# create a simple expression
+c = a + b
+
+# convert the expression into a callable object that takes (a,b)
+# values as input and computes a value for c
+f = theano.function([a,b], c)
+
+# bind 1.5 to 'a', 2.5 to 'b', and evaluate 'c'
+assert 4.0 == f(1.5, 2.5)
+```
