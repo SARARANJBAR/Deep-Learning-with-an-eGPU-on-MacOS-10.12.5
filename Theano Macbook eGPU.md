@@ -38,4 +38,8 @@ By: [J. Ross Mitchell, PhD](mailto:joseph.ross.mitchell@gmail.com)
 
 ### Test Theano!
 
-Finally we are ready to test our environment! Activate your deep learning Python environment by entering: _"source activate deeplearning"_. Next, launch Python by entering: _"python"_. From the Python prompt enter: _"#import theano"_. It should pause, then eventually describe which GPU it is using, and that cuDNN is available.
+Finally we are ready to test our environment! Activate your deep learning Python environment by entering: _"source activate deeplearning"_. Next, launch Python by entering: _"python"_. From the Python prompt enter: _"import theano"_. It should pause, then eventually describe which GPU it is using, and that cuDNN is available. Output on my system is shown below.
+
+![theano](https://user-images.githubusercontent.com/13511772/28495497-76fb71b6-6f03-11e7-8c53-f420aae5969a.png)
+
+
