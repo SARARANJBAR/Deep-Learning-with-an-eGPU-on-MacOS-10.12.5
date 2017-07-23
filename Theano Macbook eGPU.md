@@ -28,13 +28,13 @@ By: [J. Ross Mitchell, PhD](mailto:joseph.ross.mitchell@gmail.com)
     1. Note: after installing this kext, my Macbook Pro displays a very glitchy screen during its boot. The boot progress bar continues to advance on the glitchy screen, and eventually the Finder comes up looking just fine. As I mentioned above, this step should go away with Mac OS High Sierra.
 1. NVIDIA CUDA v8. I recommend following [NVIDIA's nice instructions](http://docs.nvidia.com/cuda/cuda-installation-guide-mac-os-x). Pay attention to **Table 1** on that page: we are installing on Mac OS 10.12, and this requires Xcode 8.2. You can skip to Step 3 on that page - we have already fullfilled the Prerequisites. Remember to add the _"export"_ statements to your _"~/.bash_profile"_, and invoke those exports by entering: _"source ~/.bash_profile"_.
 1. It is important to complete **Step 4. Verification** on that page. Make sure NVIDIA's compiler is installed and working. Enter: _"nvcc -V"_ in a Terminal window. Also, make sure you compile the four sample programs as listed on that page. The _"makefile"_ and source code files for these programs are located in _"/Developer/NVIDIA/CUDA-8.0/samples/"_. However, to build these programs you need to prepend each _"make"_ command with _"sudo"_. This is because the _"samples"_ directory is read-only. The output executables are installed in _"/Developer/NVIDIA/CUDA-8.0/samples/bin/x86_64/darwin/release/"_. Go there and run the _"deviceQuery"_ and _"bandwidthTest"_ programs. Output from those programs on my system is shown below.
+1. [cuDNN v5.1 for CUDA 8.0](https://developer.nvidia.com/rdp/cudnn-download). You need a (free) NVIDIA developer account to access this library. cuDNN contains a number of CUDA algorithms to accelerate deep neural networks. You _must_ use cuDNN v5.1! Newer versions of cuDNN are currently incompatible. Pascal architecture GPUs require cuDNN v5 or newer.
+    1. cuDNN is packaged as a .zip file. After unpacking it you will see a folder with two subfolders: _"lib"_ and _"include"_. Copy the files from the _"lib"_ subfolder to _"/Developer/NVIDIA/CUDA-8.0/lib"_. Copy the file in the _"include"_ subfolder to _"/Developer/NVIDIA/CUDA-8.0/include"_.
 
 ![deviceQuery output](https://user-images.githubusercontent.com/13511772/28495273-4ba03a3a-6efc-11e7-8059-3aef12a07bf7.png)
 
 ![bandwidthTest ouput](https://user-images.githubusercontent.com/13511772/28495276-4fa9565c-6efc-11e7-835a-ebbbf48b8a51.png)
 
-1. [cuDNN v5.1 for CUDA 8.0](https://developer.nvidia.com/rdp/cudnn-download). You need a (free) NVIDIA developer account to access this library. cuDNN contains a number of CUDA algorithms to accelerate deep neural networks. You _must_ use cuDNN v5.1! Newer versions of cuDNN are currently incompatible. Pascal architecture GPUs require cuDNN v5 or newer.
-    1. cuDNN is packaged as a .zip file. After unpacking it you will see a folder with two subfolders: _"lib"_ and _"include"_. Copy the files from the _"lib"_ subfolder to _"/Developer/NVIDIA/CUDA-8.0/lib"_. Copy the file in the _"include"_ subfolder to _"/Developer/NVIDIA/CUDA-8.0/include"_.
 
 ### Test Theano!
 
